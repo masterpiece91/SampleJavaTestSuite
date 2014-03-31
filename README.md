@@ -16,7 +16,7 @@ Parameter:
 ----------
 
 In order to acchive execution of test on several platforms, we introduced parameters that must be passed in order for tests to execute.
-Below are the parameters you mustß provide:
+Below are the parameters you must provide:
 
 		* -DappPath (ex. -DappPath="/Users/Alex/SourceCode/Next-Gen-iOS_App/DerivedData/IIN/Build/Products/Debug-iphonesimulator/IIN.app")
 		* -DbrowserName (ex. -DbrowserName=iOS )
