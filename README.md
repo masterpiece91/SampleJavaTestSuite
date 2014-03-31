@@ -5,7 +5,7 @@ Description:
 ------------
 
 Project is a maven project which means that it must follow maven directory structure. 
-The project is flexible and being developed should take into consideration the fact that it 
+The project is flexible and while being developed should take into consideration the fact that it
 will be used to drive all automation tests for the IIN Learning Center Project. The project
 will include the following platforms:
 		- Web
@@ -15,7 +15,7 @@ will include the following platforms:
 Parameter:
 ----------
 
-In order to acchive execution of test on several platforms, we introduced parameters that must be passed in order for tests to execute.
+In order to achieve execution of test on several platforms, we introduced parameters that must be passed in order for tests to execute.
 Below are the parameters you must provide:
 
 		* -DappPath (ex. -DappPath="/Users/Alex/SourceCode/Next-Gen-iOS_App/DerivedData/IIN/Build/Products/Debug-iphonesimulator/IIN.app")
@@ -48,7 +48,7 @@ Android:
 Future Features:
 ----------------
 
-- Generate test data in drupal backend from suite to use in test
+- Generate test data in Drupal backend from suite to use in test
 - Create common scripts that can be used across platforms. (This may prove to be difficult but it is something we should explore)
 - Provide ability to record test as they are being executed
-- Enable email notification at certain milestones with test results, screenshots and videos (if available).
+- Enable email notification at certain milestones with test results, screen-shots and videos (if available).
