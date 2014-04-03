@@ -48,7 +48,8 @@ public class TestAuthentication {
     @Test (groups = {"regression", "critical", "ios"}, priority = 2)
     public void LoginSuccessfully() {
         LoginScreen loginScreen = Screens.LoginScreen();
-        loginScreen.attemptAuthentication("qauser", "iinusers");
+        loginScreen.attemptAuthentication("fuzzy", "fuzzy");
+        Assert.assertFalse(loginScreen.assertIncorrectUserNamePasswordAlertExists(true));
     }
 
     @Test (groups = {"experimental", "ios"}, priority = 3)

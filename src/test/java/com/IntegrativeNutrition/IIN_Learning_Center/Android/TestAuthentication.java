@@ -38,14 +38,14 @@ public class TestAuthentication {
      * TESTS
      ***************************************/
 
-    @Test (groups = {"regression", "critical", "ios"}, priority = 1)
+    @Test (groups = {"regression", "critical", "android"}, priority = 1)
     public void LoginUnsuccessfully() {
         LoginScreen loginScreen = Screens.LoginScreen();
         loginScreen.attemptAuthentication("bad username", "bass password");
         Assert.assertTrue(loginScreen.assertIncorrectUserNamePasswordAlertExists(true));
     }
 
-    @Test (groups = {"regression", "critical", "ios"}, priority = 2)
+    @Test (groups = {"regression", "critical", "android"}, priority = 2)
     public void LoginSuccessfully() {
         LoginScreen loginScreen = Screens.LoginScreen();
         loginScreen.attemptAuthentication("qauser", "iinusers");

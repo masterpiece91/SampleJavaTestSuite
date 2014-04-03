@@ -300,4 +300,21 @@ public class Common {
     public static void acceptAlert(SwipeableWebDriver driver) {
         driver.switchTo().alert().accept();
     }
+
+    public static boolean waitForAlert(SwipeableWebDriver driver) {
+        int tries = 0;
+        int maxTries = 10;
+        while (tries < maxTries)
+        {
+            tries++;
+            if (driver.switchTo().alert() != null)
+                return true;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 }

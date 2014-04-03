@@ -61,10 +61,13 @@ public class LoginScreen {
 
             String expectedMessage = "Failure to login Wrong username or password.";
 
-            Boolean isCorrectMessage = Common.assertCorrectMessage(get_driver(), expectedMessage);
+            SwipeableWebDriver driver = get_driver();
+            if (!Common.waitForAlert(driver))
+                return false;
+            Boolean isCorrectMessage = Common.assertCorrectMessage(driver, expectedMessage);
 
             if (dismissAlert) {
-                Common.acceptAlert(get_driver());
+                Common.acceptAlert(driver);
             }
 
             System.out.println("  -  Assertion is: " + isCorrectMessage.toString());
