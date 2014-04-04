@@ -301,6 +301,28 @@ public class Common {
         driver.switchTo().alert().accept();
     }
 
+    public static  boolean acceptAlert(SwipeableWebDriver driver, String expectedMessage) {
+        if (assertCorrectMessage(driver, expectedMessage)) {
+            driver.switchTo().alert().accept();
+            return  true;
+        }
+
+        return false;
+    }
+
+    public static void dismissAlert(SwipeableWebDriver driver) {
+        driver.switchTo().alert().dismiss();
+    }
+
+    public static boolean dismissAlert(SwipeableWebDriver driver, String expectedMessage) {
+        if (assertCorrectMessage(driver, expectedMessage)) {
+            driver.switchTo().alert().dismiss();
+            return  true;
+        }
+
+        return false;
+    }
+
     public static boolean waitForAlert(SwipeableWebDriver driver) {
         int tries = 0;
         int maxTries = 10;

@@ -7,12 +7,10 @@ package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS;
  * Contains all elements of the login screen
  */
 
-import com.IntegrativeNutrition.IIN_Learning_Center.Global.Common;
-import com.IntegrativeNutrition.IIN_Learning_Center.Global.SwipeableWebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.FindBy;
+import com.IntegrativeNutrition.IIN_Learning_Center.Global.*;
 import static com.IntegrativeNutrition.IIN_Learning_Center.Global.TestEnvironment.*;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.*;
 
 public class LoginScreen {
 
@@ -21,13 +19,13 @@ public class LoginScreen {
      ***********************************/
 
     @FindBy(how = How.NAME, using = "Email address")
-    private WebElement usernameTextbox;
+            private WebElement usernameTextbox;
 
     @FindBy(how = How.NAME, using = "password")
-    private WebElement passwordTextbox;
+            private WebElement passwordTextbox;
 
     @FindBy(how = How.NAME, using = "Login")
-    private WebElement signInButton;
+            private WebElement signInButton;
 
     SwipeableWebDriver Driver;
 
@@ -81,5 +79,12 @@ public class LoginScreen {
             System.out.println();
             return  false;
         }
+    }
+
+    public boolean AssertAuthenticationSuccess() {
+        TimelineScreen timelineScreen = new TimelineScreen();
+        PageFactory.initElements(get_driver(), timelineScreen);
+        timelineScreen.AcceptWelcomeMessage();
+        return timelineScreen.AssertAuthenticationSuccess();
     }
 }

@@ -21,4 +21,9 @@ public class Screens {
         return loginScreen;
     }
 
+    public static TimelineScreen TimelineScreen() {
+        TimelineScreen timelineScreen = new TimelineScreen();
+        PageFactory.initElements(TestEnvironment.get_driver(), timelineScreen);
+        return timelineScreen;
+    }
 }
