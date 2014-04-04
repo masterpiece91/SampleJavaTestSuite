@@ -33,16 +33,16 @@ Example:
 
 iOS:
 
-- mvnDebug clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-iOS_App/DerivedData/IIN/Build/Products/Debug-iphonesimulator/IIN.app" -DbrowserName=iOS -DbrowserVersion=7.1 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -DforkMode=never -Dgroups=ios,critical
+- mvnDebug clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-iOS_App/DerivedData/IIN/Build/Products/Debug-iphonesimulator/IIN.app" -DbrowserName=iOS -DbrowserVersion=7.1 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -DforkMode=never -Dgroups=ios.critical
 
-- mvn clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-iOS_App/DerivedData/IIN/Build/Products/Debug-iphonesimulator/IIN.app" -DbrowserName=iOS -DbrowserVersion=7.1 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -Dgroups=ios,critical
+- mvn clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-iOS_App/DerivedData/IIN/Build/Products/Debug-iphonesimulator/IIN.app" -DbrowserName=iOS -DbrowserVersion=7.1 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -Dgroups=ios.critical
 
 
 Android:
 
-- mvnDebug clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-Android_App/IIN/NextgenApp/build/apk/NextgenApp-defaultFlavor-debug-unaligned.apk" -DbrowserName=Android -DbrowserVersion=4.4.2 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -DappPackage="com.integrativenutrition.android.nextgen" -DappActivity="com.integrativenutrition.android.nextgen.activity.SplashActivity" -DforkMode=never -Dgroups=android,critical
+- mvnDebug clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-Android_App/IIN/NextgenApp/build/apk/NextgenApp-defaultFlavor-debug-unaligned.apk" -DbrowserName=Android -DbrowserVersion=4.4.2 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -DappPackage="com.integrativenutrition.android.nextgen" -DappActivity="com.integrativenutrition.android.nextgen.activity.SplashActivity" -DforkMode=never -Dgroups=android.critical
 
-- mvn clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-Android_App/IIN/NextgenApp/build/apk/NextgenApp-defaultFlavor-debug-unaligned.apk" -DbrowserName=Android -DbrowserVersion=4.4.2 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -DappPackage="com.integrativenutrition.android.nextgen" -DappActivity="com.integrativenutrition.android.nextgen.activity.SplashActivity" -Dgroups=android,critical
+- mvn clean test -DappPath="/Users/Alex/SourceCode/Next-Gen-Android_App/IIN/NextgenApp/build/apk/NextgenApp-defaultFlavor-debug-unaligned.apk" -DbrowserName=Android -DbrowserVersion=4.4.2 -DbrowserPlatform=Mac -DtestURL="http://0.0.0.0:4723/wd/hub" -DappPackage="com.integrativenutrition.android.nextgen" -DappActivity="com.integrativenutrition.android.nextgen.activity.SplashActivity" -Dgroups=android.critical
 
 
 Future Features:
