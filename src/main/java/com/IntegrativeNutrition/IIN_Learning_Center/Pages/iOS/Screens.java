@@ -13,17 +13,19 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Screens {
 
-    private SwipeableWebDriver Driver;
+    static SwipeableWebDriver driver;
 
     public static LoginScreen LoginScreen() {
-        LoginScreen loginScreen = new LoginScreen();
-        PageFactory.initElements(TestEnvironment.get_driver(), loginScreen);
+        driver = TestEnvironment.get_driver();
+        LoginScreen loginScreen = new LoginScreen(driver);
+        PageFactory.initElements(driver, loginScreen);
         return loginScreen;
     }
 
     public static TimelineScreen TimelineScreen() {
-        TimelineScreen timelineScreen = new TimelineScreen();
-        PageFactory.initElements(TestEnvironment.get_driver(), timelineScreen);
+        driver = TestEnvironment.get_driver();
+        TimelineScreen timelineScreen = new TimelineScreen(driver);
+        PageFactory.initElements(driver, timelineScreen);
         return timelineScreen;
     }
 }

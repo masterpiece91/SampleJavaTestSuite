@@ -33,7 +33,15 @@ public class TestAuthentication extends TestStarter {
         Assert.assertTrue(loginScreen.AssertAuthenticationSuccess());
     }
 
-    @Test (groups = {"ios.experimental", "ios"}, priority = 3)
+    @Test (groups = {"ios.regression", "ios.critical", "ios"}, priority = 3)
+    public void CompleteAnAssignment() {
+        TimelineScreen timelineScreen = Screens.TimelineScreen();
+        timelineScreen.findAnAssigment();
+        timelineScreen.completeAssigment();
+        Assert.assertTrue(timelineScreen.AssertAssigmentComplete());
+    }
+
+    @Test (groups = {"ios.experimental", "ios"}, priority = 99)
     public  void TestRobotManeuvers() {
         Assert.assertTrue(Common.sendIPhoneIPadAppToBackground());
         Assert.assertTrue(Common.rotateIPhoneIPadLeft());

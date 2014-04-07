@@ -15,6 +15,13 @@ import org.openqa.selenium.support.*;
 public class LoginScreen {
 
     /************************************
+     * CONSTRUCTORS
+     ***********************************/
+    public LoginScreen(SwipeableWebDriver _driver){
+        this.driver = _driver;
+    }
+
+    /************************************
      * PAGE ELEMENTS SETUP
      ***********************************/
 
@@ -27,7 +34,7 @@ public class LoginScreen {
     @FindBy(how = How.NAME, using = "Login")
             private WebElement signInButton;
 
-    SwipeableWebDriver Driver;
+    SwipeableWebDriver driver;
 
     /************************************
      * PAGE TEST METHODS
@@ -59,7 +66,6 @@ public class LoginScreen {
 
             String expectedMessage = "Failure to login Wrong username or password.";
 
-            SwipeableWebDriver driver = get_driver();
             if (!Common.waitForAlert(driver))
                 return false;
             Boolean isCorrectMessage = Common.assertCorrectMessage(driver, expectedMessage);
@@ -82,7 +88,7 @@ public class LoginScreen {
     }
 
     public boolean AssertAuthenticationSuccess() {
-        TimelineScreen timelineScreen = new TimelineScreen();
+        TimelineScreen timelineScreen = Screens.TimelineScreen();
         PageFactory.initElements(get_driver(), timelineScreen);
         timelineScreen.AcceptWelcomeMessage();
         return timelineScreen.AssertAuthenticationSuccess();
