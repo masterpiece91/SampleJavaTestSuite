@@ -33,22 +33,36 @@ public class TimelineScreen {
     @FindBy(how = How.NAME, using = "iconGradcap")
             private WebElement iconGradcapButton;
 
+    @FindBy(how = How.NAME, using = "iconMenu")
+        private WebElement menuButton;
+
     SwipeableWebDriver driver;
     List<WebElement> expandedTimelineActivityList;
 
     /************************************
-     * PAGE TEST METHODS
+     * NAVIGATION TEST METHODS
      ************************************/
-
-    public boolean AcceptWelcomeMessage() {
-        String expectedMessage = "You Made It! Welcome to the Classroom. Would you like to take a tour before using the app?";
-        return Common.acceptAlert(driver, expectedMessage);
+    public void attemptOpenMenu() {
+        try {
+            System.out.append(" - Attempting to open to open Menu.");
+            menuButton.click();
+            System.out.println("  -  Successful");
+        }
+        catch (Exception exception) {
+            System.out.println("  -  Error Found... Read below:");
+            System.out.println("======================================================================================");
+            System.out.println("*** attemptAuthentication failed - " + exception.getMessage());
+            System.out.println("======================================================================================");
+            System.out.println();
+        }
     }
 
-    public boolean DismissWelcomeMessage() {
+    /************************************
+     * SCREEN TEST METHODS
+     ************************************/
+    public boolean AcceptWelcomeMessage() {
         String expectedMessage = "You Made It! Welcome to the Classroom. Would you like to take a tour before using the app?";
-        return Common.dismissAlert(driver, expectedMessage);
-
+        return Common.assertAlertIsCorrect(driver, "", expectedMessage, true);
     }
 
     /* In order to confirm authentication we confirm the existence of an element that should always be there. */

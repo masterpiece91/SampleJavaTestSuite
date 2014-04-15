@@ -22,10 +22,24 @@ public class Screens {
         return loginScreen;
     }
 
+    public static ForgotPasswordScreen ForgotPasswordScreen() {
+        driver = TestEnvironment.get_driver();
+        ForgotPasswordScreen forgotPasswordScreen = new ForgotPasswordScreen(driver);
+        PageFactory.initElements(driver, forgotPasswordScreen);
+        return forgotPasswordScreen;
+    }
+
     public static TimelineScreen TimelineScreen() {
         driver = TestEnvironment.get_driver();
         TimelineScreen timelineScreen = new TimelineScreen(driver);
         PageFactory.initElements(driver, timelineScreen);
         return timelineScreen;
+    }
+
+    public static MenuScreen MenuScreen() {
+        driver = TestEnvironment.get_driver();
+        MenuScreen menuScreen = new MenuScreen(driver);
+        PageFactory.initElements(driver, menuScreen);
+        return menuScreen;
     }
 }

@@ -6,7 +6,7 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -328,15 +328,69 @@ public class Common {
         int maxTries = 10;
         while (tries < maxTries)
         {
+            System.out.println();
+            System.out.println("Waiting for alert");
+            System.out.println();
             tries++;
-            if (driver.switchTo().alert() != null)
+
+            try
+            {
+                driver.switchTo().alert();
                 return true;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            }
+            catch (Exception exception)
+            {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException interruptedException) {
+                    interruptedException.printStackTrace();
+                }
             }
         }
+        System.out.println();
+        System.out.println("Failed to find alert");
+        System.out.println();
         return false;
+    }
+
+    public static boolean assertAlertIsCorrect(SwipeableWebDriver driver, String systemOutMessage, String expectedMessage, Boolean dismissAlert) {
+        try {
+            System.out.append(systemOutMessage);
+
+            if (!Common.waitForAlert(driver))
+                return false;
+            Boolean isCorrectMessage = Common.assertCorrectMessage(driver, expectedMessage);
+
+            if (dismissAlert) {
+                Common.acceptAlert(driver);
+            }
+
+            System.out.println("  -  Assertion is: " + isCorrectMessage.toString());
+            return  isCorrectMessage;
+        }
+        catch (Exception exception) {
+            System.out.println("  -  Error Found... Read below:");
+            System.out.println("======================================================================================");
+            System.out.println("*** assertIncorrectUserNamePasswordMessageExists failed - " + exception.getMessage());
+            System.out.println("======================================================================================");
+            System.out.println();
+            return  false;
+        }
+    }
+
+    public static boolean assertKeyboardIsEmail(SwipeableWebDriver driver)
+    {
+        try{
+   //         driver.elementByXpath("//window[2]/UIAKeyboard[1]");
+            return true;
+        }
+        catch (Exception exception) {
+            System.out.println("  -  Error Found... Read below:");
+            System.out.println("======================================================================================");
+            System.out.println("*** assertIncorrectUserNamePasswordMessageExists failed - " + exception.getMessage());
+            System.out.println("======================================================================================");
+            System.out.println();
+            return false;
+        }
     }
 }

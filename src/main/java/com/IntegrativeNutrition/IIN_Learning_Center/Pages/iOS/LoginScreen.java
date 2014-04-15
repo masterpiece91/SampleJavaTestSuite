@@ -9,6 +9,8 @@ package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS;
 
 import com.IntegrativeNutrition.IIN_Learning_Center.Global.*;
 import static com.IntegrativeNutrition.IIN_Learning_Center.Global.TestEnvironment.*;
+
+import com.sun.org.apache.xerces.internal.dom.CommentImpl;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
 
@@ -33,6 +35,9 @@ public class LoginScreen {
 
     @FindBy(how = How.NAME, using = "Login")
             private WebElement signInButton;
+
+    @FindBy(how = How.NAME, using = "Forgot Password?")
+        private WebElement forgotPasswordButton;
 
     SwipeableWebDriver driver;
 
@@ -60,37 +65,32 @@ public class LoginScreen {
         }
     }
 
-    public boolean assertIncorrectUserNamePasswordAlertExists( Boolean dismissAlert) {
-        try {
-            System.out.append(" - Asserting incorrect username and/or password message is correct");
-
-            String expectedMessage = "Failure to login Wrong username or password.";
-
-            if (!Common.waitForAlert(driver))
-                return false;
-            Boolean isCorrectMessage = Common.assertCorrectMessage(driver, expectedMessage);
-
-            if (dismissAlert) {
-                Common.acceptAlert(driver);
-            }
-
-            System.out.println("  -  Assertion is: " + isCorrectMessage.toString());
-            return  isCorrectMessage;
-        }
-        catch (Exception exception) {
-            System.out.println("  -  Error Found... Read below:");
-            System.out.println("======================================================================================");
-            System.out.println("*** assertIncorrectUserNamePasswordMessageExists failed - " + exception.getMessage());
-            System.out.println("======================================================================================");
-            System.out.println();
-            return  false;
-        }
+    public boolean assertIncorrectUserNamePasswordAlertExists(String systemOutMessage, String alertMessage, Boolean dismissAlert) {
+        return Common.assertAlertIsCorrect(driver, systemOutMessage, alertMessage, dismissAlert);
     }
 
     public boolean AssertAuthenticationSuccess() {
         TimelineScreen timelineScreen = Screens.TimelineScreen();
-        PageFactory.initElements(get_driver(), timelineScreen);
         timelineScreen.AcceptWelcomeMessage();
         return timelineScreen.AssertAuthenticationSuccess();
     }
+
+    public boolean assertNavigationToForgotPassword() {
+        try {
+
+            System.out.append(" - Attempting to move to forgot password screen");
+            forgotPasswordButton.click();
+            System.out.println("  -  Successful");
+            return true;
+        }
+        catch (Exception exception) {
+            System.out.println("======================================================================================");
+            System.out.println("*** attemptForgotPassword failed - " + exception.getMessage());
+            System.out.println("======================================================================================");
+            System.out.println();
+            return false;
+        }
+    }
+
+
 }

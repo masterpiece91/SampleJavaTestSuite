@@ -19,4 +19,6 @@ public class SwipeableWebDriver extends RemoteWebDriver implements HasTouchScree
     public TouchScreen getTouch() {
         return touch;
     }
+
+
 }
