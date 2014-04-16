@@ -1,4 +1,4 @@
-package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS;
+package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Login;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,6 +10,8 @@ package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS;
 import com.IntegrativeNutrition.IIN_Learning_Center.Global.*;
 import static com.IntegrativeNutrition.IIN_Learning_Center.Global.TestEnvironment.*;
 
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Screens;
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.TimelineScreen;
 import com.sun.org.apache.xerces.internal.dom.CommentImpl;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
@@ -65,8 +67,8 @@ public class LoginScreen {
         }
     }
 
-    public boolean assertIncorrectUserNamePasswordAlertExists(String systemOutMessage, String alertMessage, Boolean dismissAlert) {
-        return Common.assertAlertIsCorrect(driver, systemOutMessage, alertMessage, dismissAlert);
+    public boolean assertIncorrectUserNamePasswordAlertExists(String systemOutMessage, String alertMessage, Boolean acceptAlert) {
+        return Common.assertAlertIsCorrect(driver, systemOutMessage, alertMessage, acceptAlert);
     }
 
     public boolean AssertAuthenticationSuccess() {

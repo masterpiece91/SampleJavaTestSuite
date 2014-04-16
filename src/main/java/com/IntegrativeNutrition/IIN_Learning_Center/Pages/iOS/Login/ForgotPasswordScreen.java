@@ -1,4 +1,4 @@
-package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS;
+package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Login;
 
 /**
  * Created by Noah Blake on 4/15/14.
@@ -79,12 +79,12 @@ public class ForgotPasswordScreen {
         }
     }
 
-    public boolean assertNewPasswordRequestSuccess(Boolean dismissAlert) {
-        return Common.assertAlertIsCorrect(driver, " - Asserting email is correct", "Request received We will email you instructions to create a new password.", dismissAlert);
+    public boolean assertNewPasswordRequestSuccess(Boolean acceptAlert) {
+        return Common.assertAlertIsCorrect(driver, " - Asserting email is correct", "Request received We will email you instructions to create a new password.", acceptAlert);
     }
 
-    public boolean assertNewPasswordRequestFailure(String systemOutMessage, String alertMessage, Boolean dismissAlert) {
-       return Common.assertAlertIsCorrect(driver, systemOutMessage, alertMessage, dismissAlert);
+    public boolean assertNewPasswordRequestFailure(String systemOutMessage, String alertMessage, Boolean acceptAlert) {
+       return Common.assertAlertIsCorrect(driver, systemOutMessage, alertMessage, acceptAlert);
     }
 
 

@@ -33,8 +33,8 @@ public class TimelineScreen {
     @FindBy(how = How.NAME, using = "iconGradcap")
             private WebElement iconGradcapButton;
 
-    @FindBy(how = How.NAME, using = "iconMenu")
-        private WebElement menuButton;
+    @FindBy(how = How.NAME, using = "Opens sidebar menu on the left side")
+        public WebElement menuButton;
 
     SwipeableWebDriver driver;
     List<WebElement> expandedTimelineActivityList;
@@ -43,18 +43,14 @@ public class TimelineScreen {
      * NAVIGATION TEST METHODS
      ************************************/
     public void attemptOpenMenu() {
-        try {
-            System.out.append(" - Attempting to open to open Menu.");
-            menuButton.click();
-            System.out.println("  -  Successful");
-        }
-        catch (Exception exception) {
-            System.out.println("  -  Error Found... Read below:");
-            System.out.println("======================================================================================");
-            System.out.println("*** attemptAuthentication failed - " + exception.getMessage());
-            System.out.println("======================================================================================");
-            System.out.println();
-        }
+
+        // Remove this test code
+        Common.waitForAlert(driver);
+        Common.dismissAlert(driver);
+        // Remove this test code
+        //
+        //
+        Common.clickWebElement(menuButton, " - Attempting to open to open Menu.");
     }
 
     /************************************

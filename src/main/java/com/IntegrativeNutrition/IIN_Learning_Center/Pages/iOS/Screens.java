@@ -2,6 +2,12 @@ package com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS;
 
 import com.IntegrativeNutrition.IIN_Learning_Center.Global.SwipeableWebDriver;
 import com.IntegrativeNutrition.IIN_Learning_Center.Global.TestEnvironment;
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Login.ForgotPasswordScreen;
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Login.LoginScreen;
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Settings.ChangePasswordScreen;
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Settings.ProfileScreen;
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Settings.SettingsScreen;
+import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Settings.NotificationsScreen;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -41,5 +47,36 @@ public class Screens {
         MenuScreen menuScreen = new MenuScreen(driver);
         PageFactory.initElements(driver, menuScreen);
         return menuScreen;
+    }
+
+    /************************************
+     * SETTINGS SCREENS
+     ***********************************/
+    public static SettingsScreen SettingScreen() {
+        driver = TestEnvironment.get_driver();
+        SettingsScreen settingsScreen = new SettingsScreen(driver);
+        PageFactory.initElements(driver, settingsScreen);
+        return settingsScreen;
+    }
+
+    public static ProfileScreen ProfileScreen() {
+        driver = TestEnvironment.get_driver();
+        ProfileScreen profileScreen = new ProfileScreen(driver);
+        PageFactory.initElements(driver, profileScreen);
+        return profileScreen;
+    }
+
+    public static ChangePasswordScreen ChangePasswordScreen() {
+        driver = TestEnvironment.get_driver();
+        ChangePasswordScreen changePasswordScreen = new ChangePasswordScreen(driver);
+        PageFactory.initElements(driver, changePasswordScreen);
+        return changePasswordScreen;
+    }
+
+    public static NotificationsScreen NotificationsScreen() {
+        driver = TestEnvironment.get_driver();
+        NotificationsScreen notificationsScreen = new NotificationsScreen(driver);
+        PageFactory.initElements(driver, notificationsScreen);
+        return notificationsScreen;
     }
 }

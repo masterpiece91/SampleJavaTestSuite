@@ -9,7 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.openqa.selenium.JavascriptExecutor;
-
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.*;
 /**
  * Created with IntelliJ IDEA.
  * User: Alex
@@ -18,7 +19,6 @@ import org.openqa.selenium.JavascriptExecutor;
  * Contains all methods that are common to the whole test suite
  */
 public class Common {
-
     public static void setFocusOnSimulator() {
         try {
             // Script for setting iPhone Simulator to foreground
@@ -353,7 +353,7 @@ public class Common {
         return false;
     }
 
-    public static boolean assertAlertIsCorrect(SwipeableWebDriver driver, String systemOutMessage, String expectedMessage, Boolean dismissAlert) {
+    public static boolean assertAlertIsCorrect(SwipeableWebDriver driver, String systemOutMessage, String expectedMessage, Boolean acceptAlert) {
         try {
             System.out.append(systemOutMessage);
 
@@ -361,8 +361,11 @@ public class Common {
                 return false;
             Boolean isCorrectMessage = Common.assertCorrectMessage(driver, expectedMessage);
 
-            if (dismissAlert) {
+            if (acceptAlert) {
                 Common.acceptAlert(driver);
+            }
+            else{
+                Common.dismissAlert(driver);
             }
 
             System.out.println("  -  Assertion is: " + isCorrectMessage.toString());
@@ -375,6 +378,25 @@ public class Common {
             System.out.println("======================================================================================");
             System.out.println();
             return  false;
+        }
+    }
+
+    public static boolean clickWebElement(WebElement webElement, String systemOutMessage)
+    {
+        try {
+            System.out.append(systemOutMessage);
+            //perform swipe gesture
+            webElement.click();
+            System.out.println("  -  Successful");
+            return true;
+        }
+        catch (Exception exception) {
+            System.out.println("  -  Error Found... Read below:");
+            System.out.println("======================================================================================");
+            System.out.println("*** attemptAuthentication failed - " + exception.getMessage());
+            System.out.println("======================================================================================");
+            System.out.println();
+            return false;
         }
     }
 
