@@ -80,7 +80,7 @@ public class ForgotPasswordScreen {
     }
 
     public boolean assertNewPasswordRequestSuccess(Boolean acceptAlert) {
-        return Common.assertAlertIsCorrect(driver, " - Asserting email is correct", "Request received We will email you instructions to create a new password.", acceptAlert);
+        return Common.assertAlertIsCorrect(driver, " - Asserting email alert is correct", "Request received We will email you instructions to create a new password.", acceptAlert);
     }
 
     public boolean assertNewPasswordRequestFailure(String systemOutMessage, String alertMessage, Boolean acceptAlert) {

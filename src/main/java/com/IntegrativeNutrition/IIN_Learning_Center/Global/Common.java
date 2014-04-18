@@ -324,8 +324,12 @@ public class Common {
     }
 
     public static boolean waitForAlert(SwipeableWebDriver driver) {
+        return Common.waitForAlert(driver, 10);
+    }
+
+    public static boolean waitForAlert(SwipeableWebDriver driver, int waitDuration) {
         int tries = 0;
-        int maxTries = 10;
+        int maxTries = waitDuration;
         while (tries < maxTries)
         {
             System.out.println();

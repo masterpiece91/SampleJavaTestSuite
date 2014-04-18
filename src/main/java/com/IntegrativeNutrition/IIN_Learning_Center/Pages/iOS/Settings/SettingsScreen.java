@@ -29,6 +29,9 @@ public class SettingsScreen {
      * PAGE ELEMENTS SETUP
      * *********************************
      */
+    @FindBy(how = How.NAME, using = "Clear All")
+        private WebElement clearAllButton;
+
     @FindBy(how = How.NAME, using = "Profile")
         private WebElement profileCell;
 
@@ -50,6 +53,13 @@ public class SettingsScreen {
      * NAVIGATION TEST METHODS
      * **********************************
      */
+    public void attemptClearDownloadedContent(){
+        Common.clickWebElement(clearAllButton, " - Attempting to clear all downloaded content.");
+    }
+    public boolean assertClearDownloadedContentAlert(){
+        return Common.assertAlertIsCorrect(driver, " - Asserting clear downloaded content alert is correct", "Downloaded Content. Are you sure you want to clear your downloaded content?" , false);
+    }
+
     public void attemptProfileNavigation() {
         Common.clickWebElement(profileCell, " - Attempting to navigate to Profile.");
     }

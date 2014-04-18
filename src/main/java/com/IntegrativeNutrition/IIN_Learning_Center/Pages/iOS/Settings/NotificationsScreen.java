@@ -42,6 +42,17 @@ public class NotificationsScreen {
      * NAVIGATION TEST METHODS
      * **********************************
      */
+    public boolean assertPushNotificationAlert ()
+    {
+        boolean tmpFoundAlert = Common.waitForAlert(driver, 2);
+        if (tmpFoundAlert){
+            return Common.assertAlertIsCorrect(driver, " - Asserting push notifications alert is correct", "Push Notifications You must turn push notifications on in System Preferences to manage device settings on this screen." , true);
+        }
+        else{
+            return true;
+        }
+    }
+
     public void attemptBackNavigation() {
         Common.clickWebElement(backButton, " - Attempting to navigate to Settings.");
     }

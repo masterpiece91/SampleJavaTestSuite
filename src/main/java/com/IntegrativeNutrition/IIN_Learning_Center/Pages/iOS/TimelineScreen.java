@@ -33,7 +33,7 @@ public class TimelineScreen {
     @FindBy(how = How.NAME, using = "iconGradcap")
             private WebElement iconGradcapButton;
 
-    @FindBy(how = How.NAME, using = "Opens sidebar menu on the left side")
+    @FindBys({@FindBy(how = How.XPATH, using = "//window[1]/navigationBar[1]/button[2]")})
         public WebElement menuButton;
 
     SwipeableWebDriver driver;
@@ -43,13 +43,6 @@ public class TimelineScreen {
      * NAVIGATION TEST METHODS
      ************************************/
     public void attemptOpenMenu() {
-
-        // Remove this test code
-        Common.waitForAlert(driver);
-        Common.dismissAlert(driver);
-        // Remove this test code
-        //
-        //
         Common.clickWebElement(menuButton, " - Attempting to open to open Menu.");
     }
 
