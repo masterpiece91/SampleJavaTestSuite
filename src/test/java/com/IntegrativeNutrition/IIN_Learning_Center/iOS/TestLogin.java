@@ -8,6 +8,8 @@ package com.IntegrativeNutrition.IIN_Learning_Center.iOS;
  */
 
 import com.IntegrativeNutrition.IIN_Learning_Center.Common.TestStarter;
+import com.IntegrativeNutrition.IIN_Learning_Center.DrupalServices.User;
+import com.IntegrativeNutrition.IIN_Learning_Center.Global.Common;
 import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.*;
 import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Login.ForgotPasswordScreen;
 import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Login.LoginScreen;
@@ -84,9 +86,13 @@ public class TestLogin extends TestStarter {
     }
 
     @Test (groups = {"ios.regression", "ios.critical", "ios"}, priority = 5)
-    public void loginSuccessfully() {
+    public void loginSuccessfully() throws Exception {
+        //Example of how to create new user along with enrollment.
+        //Username and password pass are those for admin account that will enable user to create a new Student.
+        User newStudent = Common.createAndEnrollStudent("admin", "password");
+
         LoginScreen loginScreen = Screens.LoginScreen();
-        loginScreen.attemptAuthentication("fuzzier", "pass");
+        loginScreen.attemptAuthentication(newStudent.getName(), newStudent.getPassword());
         Assert.assertTrue(loginScreen.AssertAuthenticationSuccess());
     }
     @Test (groups = {"ios.regression", "ios.critical", "ios"}, priority = 10)

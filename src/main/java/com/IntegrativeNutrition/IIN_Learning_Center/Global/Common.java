@@ -5,9 +5,13 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.IntegrativeNutrition.IIN_Learning_Center.DrupalServices.DrupalTools;
+import com.IntegrativeNutrition.IIN_Learning_Center.DrupalServices.User;
+import com.IntegrativeNutrition.IIN_Learning_Center.DrupalServices.UserAddress;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
@@ -418,5 +422,96 @@ public class Common {
             System.out.println();
             return false;
         }
+    }
+
+    // convert InputStream to String
+    public static String convertInputStreamToString(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
+    }
+
+    public static User createAndEnrollStudent(String userName, String password) throws Exception {
+        DrupalTools drupalTools = new DrupalTools("test.learn.iin.nu");
+        drupalTools.LoginToSite(userName, password, true);
+
+        // Use date & time to create unique variables
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        Date date = new Date();
+
+        User newStudent = new User();
+        UserAddress homeAddress = new UserAddress();
+        UserAddress shippingAddress = new UserAddress();
+        UserAddress workAddress = new UserAddress();
+
+        newStudent.setFirstName("automated");
+        newStudent.setLastName("tool");
+        newStudent.setName("tester-" + dateFormat.format(date));
+
+        //Must change email. Gmail allows you to provide "tags" along with email address.
+        //This allows us to use the same email address while providing a unique value for the backend.
+        newStudent.setEmail("masterpiece91+" + dateFormat.format(date) + "@gmail.com");
+        newStudent.setContactPhone("212-555-1234");
+        newStudent.setDisplayName("tester-" + dateFormat.format(date));
+        newStudent.setInitialSetupCompleted(false);
+        newStudent.setMigrated(false);
+        newStudent.setFinancialStanding("1");
+
+        homeAddress.setAddressType("home");
+        homeAddress.setPostalCode("10016");
+        homeAddress.setCountry("US");
+        homeAddress.setProvince("NY");
+        homeAddress.setCity("New York");
+        homeAddress.setAddress1("test ave");
+        homeAddress.setAddress2("apt 3");
+
+        newStudent.setUserHomeAddress(homeAddress);
+
+        shippingAddress.setAddressType("shipping");
+        shippingAddress.setPostalCode("10016");
+        shippingAddress.setCountry("US");
+        shippingAddress.setProvince("NY");
+        shippingAddress.setCity("New York");
+        shippingAddress.setAddress1("test ave");
+        shippingAddress.setAddress2("apt 3");
+
+        newStudent.setUserShippingAddress(shippingAddress);
+
+        workAddress.setAddressType("work");
+        workAddress.setPostalCode("10016");
+        workAddress.setCountry("US");
+        workAddress.setProvince("NY");
+        workAddress.setCity("New York");
+        workAddress.setAddress1("test ave");
+        workAddress.setAddress2("apt 3");
+
+        newStudent.setUserWorkAddress(workAddress);
+
+        //Once you have provided all info then simply make call to create user and then based on that user create new
+        //enrollment.
+        return drupalTools.enrollStudent(drupalTools.createNewStudent(newStudent));
     }
 }

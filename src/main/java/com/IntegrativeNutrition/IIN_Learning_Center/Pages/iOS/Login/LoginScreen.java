@@ -12,7 +12,6 @@ import static com.IntegrativeNutrition.IIN_Learning_Center.Global.TestEnvironmen
 
 import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.Screens;
 import com.IntegrativeNutrition.IIN_Learning_Center.Pages.iOS.TimelineScreen;
-import com.sun.org.apache.xerces.internal.dom.CommentImpl;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
 
